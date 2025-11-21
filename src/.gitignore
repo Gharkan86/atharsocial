@@ -1,0 +1,21 @@
+node_modules/
+.env
+.DS_Store
+dist/
+coverage/
+npm-debug.log*
+.vscode/
+.idea/
+
+# logs
+logs
+*.log
+
+# runtime
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# build
+build/
