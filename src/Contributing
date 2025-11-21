@@ -1,0 +1,90 @@
+# Contributing
+
+Thanks for your interest in contributing to atharsocial!
+
+- Please open issues for bug reports or feature requests.
+- Fork the repo and create a branch for your change (feature/<desc> or fix/<issue>-<desc>). 
+- Open a pull request against main from your branch.
+- Ensure linting and tests pass (if any).
+
+Thanks! 
+``` ````
+
+````markdown name=CODE_OF_CONDUCT.md
+# Code of Conduct
+
+This project follows the Contributor Covenant code of conduct. By participating, you agree to abide by its terms.
+
+Please be respectful, constructive, and inclusive. Report any issues to the repository maintainers.
+
+(See https://www.contributor-covenant.org/ for full text.)
+``` ````
+
+LICENSE
+```name=LICENSE
+MIT License
+
+Copyright (c) 2025 Gharkan86
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+.github/workflows/nodejs.yml
+```name=.github/workflows/nodejs.yml
+name: CI
+
+on:
+  push:
+    branches: [ main, feature/initial-setup ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: npm ci
+      - run: npm run test
+```
+
+How you can add these locally (commands)
+- Clone / fetch and switch to the branch:
+  - git clone git@github.com:Gharkan86/atharsocial.git
+  - cd atharsocial
+  - git fetch origin
+  - git checkout feature/initial-setup
+    - (if the branch doesn't exist locally: git checkout -b feature/initial-setup origin/feature/initial-setup)
+- Create the files above in their paths, then:
+  - git add .
+  - git commit -m "Add scaffold: server, .gitignore, LICENSE, CONTRIBUTING, CODE_OF_CONDUCT, CI"
+  - git push origin feature/initial-setup
+
+Notes
+- The CI uses npm ci which requires a package-lock.json. Locally you can run npm install to generate package-lock.json before pushing, or run npm install --package-lock-only.
+- After you push, I can open a pull request from feature/initial-setup into main, add further scaffolding (frontend or other), or add tests/linters.
+
+What would you like me to do next?
+- I can retry pushing the files to feature/initial-setup if you update the repository permissions for me.
+- Or I can continue from here and prepare additional files (frontend scaffold, README updates, GitHub templates) and present them for you to add.
